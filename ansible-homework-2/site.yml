@@ -19,7 +19,6 @@
             path: "{{ java_home }}"
           tags: java
         - name: Extract java in the installation directory
-          become: true
           unarchive:
             copy: false
             src: "/tmp/jdk-{{ java_jdk_version }}.tar.gz"
@@ -29,7 +28,6 @@
           tags:
             - java
         - name: Export environment variables
-          become: true
           template:
             src: jdk.sh.j2
             dest: /etc/profile.d/jdk.sh
@@ -54,7 +52,6 @@
             path: "{{ elastic_home }}"
           tags: elastic
         - name: Extract Elasticsearch in the installation directory
-          become: true
           unarchive:
             copy: false
             src: "/tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
@@ -64,7 +61,6 @@
           tags:
             - elastic
         - name: Set environment Elastic
-          become: true
           template:
             src: templates/elk.sh.j2
             dest: /etc/profile.d/elk.sh
