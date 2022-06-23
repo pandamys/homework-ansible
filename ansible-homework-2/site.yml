@@ -14,7 +14,6 @@
           until: download_java_binaries is succeeded
           tags: java
         - name: Ensure installation dir exists
-          become: true
           file:
             state: directory
             path: "{{ java_home }}"
